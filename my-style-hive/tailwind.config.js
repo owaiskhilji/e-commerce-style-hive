@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-    content: ["./src/**/*.{js,jsx,ts,tsx}"], // React کے تمام فائلز کو اسکین کرے گا
+    content: [
+      "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "node_modules/tw-elements/dist/js/**/*.js"
+    ],
     theme: {
       extend: {
         colors: {  // ✅ Custom colors yahan add honge
@@ -10,6 +14,6 @@ export default {
         },
       },
     },
-    plugins: [],
+    plugins: [require("tw-elements/plugin.cjs")],
   };
   

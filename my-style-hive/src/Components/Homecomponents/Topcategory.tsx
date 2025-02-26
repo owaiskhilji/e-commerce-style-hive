@@ -14,62 +14,51 @@ const Topcategory = () => {
   console.log("products", data);
 
   const settings = {
-    dots: true,
+    dots: false, 
     infinite: true, 
-    speed: 5000, 
+    speed: 1000,
     slidesToShow: 3,
-    slidesToScroll: 1, 
-    initialSlide: 0,
+    slidesToScroll: 2, 
     autoplay: true, 
-    autoplaySpeed: 0,
-    cssEase: "linear",
+    autoplaySpeed: 3000, 
+    cssEase: "ease-in-out",
+    centerMode: true,  // ✅ Centering enable kiya
+    variableWidth: false, // ✅ Proper width maintain karega
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+          slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          centerMode: true,  // ✅ Mobile par center hoga
+          arrows: false, 
         },
       },
     ],
   };
 
   return (
-    <div className="slider-container mt-10 max-w-screen-xl mx-auto px-4">
+    <div className="slider-container mt-10 max-w-full overflow-hidden mx-auto px-0"> 
       {/* Heading */}
       <div className="flex justify-center items-center mb-6 sm:mb-8">
         <h2 className="text-xl sm:text-3xl font-extrabold text-textcolor">
           TOP CATEGORY
         </h2>
       </div>
-
-      {/* Slider with spacing */}
-      <Slider {...settings} className="px-2">
+      
+      {/* Slider */}
+      <Slider {...settings} className="mx-auto w-full">
         {data.length > 0 ? (
           data.map((item: productType, index: number) => (
-            <div
-              key={index}
-              className="w-auto px-2" // ✅ Space between slides added
-            >
-              <div className="w-[320px] h-[200px] sm:w-[400px] sm:h-[250px] group overflow-hidden cursor-pointer relative shadow-2xl hover:shadow-textcolor rounded-xl">
-                {/* Image Container */}
+            <div key={index} className="flex justify-center items-center mx-auto">  {/* ✅ Centering Fix */}
+              <div className="w-64 h-64 sm:w-[400px] sm:h-[250px] group overflow-hidden cursor-pointer relative shadow-2xl hover:shadow-textcolor rounded-xl">
                 <div className="w-full h-full overflow-hidden rounded-xl bg-gray-100">
                   <img
                     src={item.image}
@@ -78,7 +67,6 @@ const Topcategory = () => {
                   />
                 </div>
 
-                {/* Category Text Overlay */}
                 <div className="absolute bottom-3 left-4 bg-black/60 px-4 py-2 rounded-xl">
                   <h2 className="text-lg sm:text-2xl font-semibold text-white truncate">
                     {item.category}
