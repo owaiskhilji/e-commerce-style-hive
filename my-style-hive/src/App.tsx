@@ -4,6 +4,7 @@ import Navbar from './Components/Homecomponents/Navbar';
 import ProductCart from './Components/Homecomponents/ProductCart';
 import Topcategory from './Components/Homecomponents/Topcategory';
 import Banner from './Components/Homecomponents/Banner';
+import Topsellerproduct from './Components/Homecomponents/Topsellerproduct';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Topcategory/>
       <ProductCart/>
       <Banner/>
+      <Topsellerproduct/>
       <br/>
       <br/>
       <br/>

@@ -17,7 +17,7 @@ interface imageType{
 
 const Banner = () => {
   return (
-    <div className="mt-20 relative w-80 sm:w-[600px] md:w-[700px] lg:w-[1400px] mx-auto h-52 sm:h-64 lg:h-52 xl:h-96 bg-cover bg-center rounded-xl overflow-hidden shadow-lg">
+    <div className="mt-12 relative w-80 sm:w-[600px] md:w-[700px] lg:w-[1400px] mx-auto h-52 sm:h-64 lg:h-52 xl:h-96 bg-cover bg-center rounded-xl overflow-hidden shadow-lg">
     <img src={bannerData.image} className="w-full h-full object-cover"/>
     <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
       

@@ -1,10 +1,15 @@
+
+
+
+
+
 import { useState ,useEffect} from "react";
 import {ProductApi, productType} from "../OurProductApi/ProductApi";
  import AOS from "aos"
 import "aos/dist/aos.css";
 
 
-function ProductCart() {
+function Topsellerproduct() {
 useEffect(() => {
         AOS.init({
           duration: 1000, 
@@ -19,17 +24,17 @@ ProductApi().then(data=>setdata(data) )
 
  console.log("products",data )
 
-const limitedData = data.slice(0,8)
+const limitedData = data.slice(0,4)
 
  return (
     <div className="mt-10">
         <div className="font-[sans-serif] p-4 mx-auto max-w-[1400px]">
         <div className="flex justify-between items-center mb-6 sm:mb-8">
   <h2 className="text-xl sm:text-3xl font-extrabold text-textcolor">
-    OUR PRODUCTS
+    Top Seller Product
   </h2>
   <button className="font-semibold bg-backgroundcolor hover:bg-textcolor w-28 sm:w-32 md:w-52 lg:w-52 text-xs sm:text-base md:text-lg lg:text-lg  text-textcolor hover:text-white px-4 py-2 rounded-lg shadow-lg">
-    Explore More 
+    See All 
   </button>
 </div>
 
@@ -93,4 +98,7 @@ const limitedData = data.slice(0,8)
   )
 }
 
-export default ProductCart
+export default Topsellerproduct
+
+
+
