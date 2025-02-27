@@ -10,8 +10,8 @@ function Footer() {
   }, []);
 
   return (
-    <div>
-      <footer className="flex flex-col items-center bg-zinc-50 text-center text-surface dark:bg-neutral-700 dark:text-white">
+    <div className="mt-10">
+      <footer className="flex flex-col items-center bg-backgroundcolor text-center text-surface dark:bg-neutral-700 dark:text-white">
         <div className="container px-6 pt-6">
           {/* Social Media Links */}
           <div className="mb-6 flex justify-center space-x-2">
@@ -134,20 +134,21 @@ function Footer() {
                   </p>
                 </div>
 
-                <div className="relative md:mb-6" data-twe-input-wrapper-init>
-                  <input
-                    type="email"
-                    className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-primary [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
-                    id="exampleFormControlInputEmail"
-                    placeholder="Email address"
-                  />
-                  <label
-                    htmlFor="exampleFormControlInputEmail"
-                    className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary"
-                  >
-                    Email address
-                  </label>
-                </div>
+               <div className="relative md:mb-6 w-full" data-twe-input-wrapper-init>
+                 <input 
+             type="email"
+                  className="peer block w-full rounded border border-black bg-transparent px-3 py-2 outline-none transition-all duration-200 ease-linear focus:border-textcolor focus:ring-textcolor dark:text-white dark:placeholder:text-neutral-300"
+                  id="exampleFormControlInputEmail"
+                  placeholder="Email address"
+          />
+                          <label
+                            htmlFor="exampleFormControlInputEmail"
+                            className="pointer-events-none absolute left-3 top-2 text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-textcolor"
+                          >
+                            Email address
+                          </label>
+                        </div>
+
 
                 <div className="mb-6 md:me-auto">
                   <button
@@ -166,8 +167,8 @@ function Footer() {
           {/* About Section */}
           <div className="mb-6">
             <p>
-              Welcome to <strong>Fashion Lovers</strong>, your ultimate destination for luxurious fragrances. We offer a curated collection of perfumes, colognes, and scented accessories to elevate your everyday style. Stay updated with our newsletter and never miss out on exclusive deals and new arrivals!
-            </p>
+            Welcome to <strong> Fragrance Haven</strong>, your go-to destination for premium perfumes and scents. Explore our exclusive collection of luxurious fragrances that define elegance and style. Sign up for our newsletter to stay updated on new arrivals, special discounts, and expert fragrance tips!
+                    </p>
           </div>
 
           {/* Quick Links */}
@@ -247,7 +248,7 @@ function Footer() {
         </div>
 
         {/* Copyright Section */}
-        <div className="w-full bg-black/5 p-4 text-center">
+        <div className="w-full bg-textcolor p-4 text-center text-backgroundcolor">
           © 2023 Copyright:
           <a className="font-semibold" href="https://fashionlovers.com/">
             Fashion Lovers
