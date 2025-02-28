@@ -85,8 +85,8 @@ export default function Navbar(){
               <li className='max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:after:absolute lg:after:bg-black lg:after:w-full lg:after:h-[2px] lg:after:block lg:after:top-7 lg:after:transition-all lg:after:duration-300'>
                 <a href='javascript:void(0)' className='font-semibold text-textcolor sm:text-textcolor md:text-textcolor lg:text-textcolor block text-[15px]'>Shopping</a>
               </li>
-              <li className='max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:hover:after:absolute lg:after:bg-black lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:top-7 lg:after:transition-all lg:after:duration-300'>
-                <a href='javascript:void(0)' className=' text-textcolor sm:text-textcolor md:text-textcolor lg:text-textcolor block text-[15px]'><Dropdown/></a>
+              <li>
+                <Dropdown/>
               </li>
               <li className='max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:hover:after:absolute lg:after:bg-black lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:top-7 lg:after:transition-all lg:after:duration-300'>
                 <a href='javascript:void(0)' className='font-semibold text-textcolor sm:text-textcolor md:text-textcolor lg:text-textcolor block text-[15px]'>Tracking</a>

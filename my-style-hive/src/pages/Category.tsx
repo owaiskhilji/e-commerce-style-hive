@@ -1,21 +1,33 @@
 import { useState ,useEffect} from "react";
-import { Link } from "react-router-dom"
-import {ProductApi, productType} from "../Components/OurProductApi/ProductApi";
+import { useParams} from "react-router"
+import axios from "axios"
+import { productType } from "../Components/OurProductApi/ProductApi";
  import AOS from "aos"
 import "aos/dist/aos.css";
 
-
-function Productlist() {
-useEffect(() => {
+function Category() {
+    const [data , setdata] = useState<productType[]>([])
+    const { category } = useParams()
+    console.log(category)
+    useEffect(() => {
         AOS.init({
           duration: 1000, 
            });
       }, []);
 
- const [data , setdata] = useState<productType[]>([])
  useEffect(()=>{
-ProductApi().then(data=>setdata(data) )
+     async function get(){
+     try{
+    const response = await axios.get(`https://67be0734321b883e790edf03.mockapi.io/api/v1/perfumes/perfumedata?category=${category}`)
 
+console.log("RESPONSE",response.data)
+    setdata(response.data)
+}
+catch(err){
+    console.log("api error",err)
+}
+}
+get()
 },[])
 
 //  console.log("products",data )
@@ -90,4 +102,4 @@ ProductApi().then(data=>setdata(data) )
   )
 }
 
-export default Productlist
+export default Category

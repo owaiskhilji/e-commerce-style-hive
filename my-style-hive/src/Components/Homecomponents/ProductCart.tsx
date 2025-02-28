@@ -1,4 +1,5 @@
 import { useState ,useEffect} from "react";
+import { useNavigate } from "react-router"
 import {ProductApi, productType} from "../OurProductApi/ProductApi";
  import AOS from "aos"
 import "aos/dist/aos.css";
@@ -12,6 +13,7 @@ useEffect(() => {
       }, []);
 
  const [data , setdata] = useState<productType[]>([])
+const navigate = useNavigate()
  useEffect(()=>{
 ProductApi().then(data=>setdata(data) )
 
@@ -28,7 +30,9 @@ const limitedData = data.slice(0,8)
   <h2 className="text-xl sm:text-3xl font-extrabold text-textcolor">
     OUR PRODUCTS
   </h2>
-  <button className="font-semibold bg-backgroundcolor hover:bg-textcolor w-28 sm:w-32 md:w-52 lg:w-52 text-xs sm:text-base md:text-lg lg:text-lg  text-textcolor hover:text-white px-4 py-2 rounded-lg shadow-lg">
+  <button 
+ onClick={()=>navigate("/productlist")}
+  className="font-semibold bg-backgroundcolor hover:bg-textcolor w-28 sm:w-32 md:w-52 lg:w-52 text-xs sm:text-base md:text-lg lg:text-lg  text-textcolor hover:text-white px-4 py-2 rounded-lg shadow-lg">
     Explore More 
   </button>
 </div>

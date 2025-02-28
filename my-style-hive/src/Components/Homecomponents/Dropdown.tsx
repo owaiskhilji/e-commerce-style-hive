@@ -4,13 +4,12 @@ import {ProductApi, productType} from "../OurProductApi/ProductApi";
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [data , setdata] = useState<productType[]>([])
+  const [category , setcategory] = useState<string>("")
   let timeoutId: NodeJS.Timeout;
 
   const columns = 10;
   const categoryWidth = 180;
   const containerWidth = Math.min(data.length * categoryWidth, columns * categoryWidth);
-  
-
 
   const handleMouseEnter = () => {
     clearTimeout(timeoutId); 
@@ -70,7 +69,8 @@ const Dropdown = () => {
     data.length>0 ?(
         data.map((item:productType,index:number)=>(
         <div  key={index}>
-              <a href="#" 
+              <a href={`/c/${category}`}
+              onClick={()=>setcategory(item.category)}
               className="text-black block text-lg hover:underline py-2 border-b-2">
                 {item.category}
               </a>
