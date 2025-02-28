@@ -55,14 +55,14 @@ function Crousel() {
     <Slider {...settings} className=' w-full'>
       {
         imageData.map((item:imageType, index:number) => (
-         <div key={index} className="flex flex-col items-center justify-center border-4 border-textcolor ">
+         <div key={index} className="flex flex-col items-center justify-center">
           <div >
             <img 
             src={item.image1} 
             alt={item.des} 
              className="w-full object-cover"
             />
-            <div className="text-center py-5 bg-backgroundcolor shadow-sm" >
+            <div className="text-center py-5 bg-backgroundcolor shadow-sm border-b-8 border-textcolor" >
               <h3 className="text-sm sm:text-xl md:text-2xl lg:text-2xl font-bold ">{item.des}</h3>
             </div>
           </div>

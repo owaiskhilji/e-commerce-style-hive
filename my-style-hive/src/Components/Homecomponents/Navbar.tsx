@@ -1,5 +1,6 @@
 // import "../App.css"
 import { useState, useEffect, useRef } from 'react';
+import Dropdown from "./Dropdown"
 export default function Navbar(){
    
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,12 +29,11 @@ export default function Navbar(){
   
    
     return(
-        <div>
-       
+        <div>      
     <div >
-      <header className=' flex shadow-md py-3 px-4 sm:px-10 bg-white font-[sans-serif] min-h-[70px] tracking-wide relative z-50' style={{backgroundColor:"#443627" }}>
+      <header className=' flex shadow-md py-3 px-4 sm:px-10 bg-backgroundcolor font-[sans-serif] min-h-[70px] tracking-wide relative z-50 border-b-4 border-textcolor'>
         <div className='flex flex-wrap items-center justify-between lg:gap-y-4 gap-y-6 gap-x-4 w-full'>
-        <a href="javascript:void(0)" className="text-lg sm:text-2xl md:text-2xl lg:text-2xl font-bold" style={{ fontFamily: 'Montserrat, sans-serif'}}>
+        <a href="javascript:void(0)" className="text-textcolor text-lg sm:text-2xl md:text-2xl lg:text-2xl font-bold" style={{ fontFamily: 'Montserrat, sans-serif'}}>
       StyleHive
     </a>
 
@@ -83,22 +83,22 @@ export default function Navbar(){
     </a>
               </li>
               <li className='max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:after:absolute lg:after:bg-black lg:after:w-full lg:after:h-[2px] lg:after:block lg:after:top-7 lg:after:transition-all lg:after:duration-300'>
-                <a href='javascript:void(0)' className='text-textcolor sm:text-textcolor md:text-textcolor lg:text-white block text-[15px]'>Shopping</a>
+                <a href='javascript:void(0)' className='font-semibold text-textcolor sm:text-textcolor md:text-textcolor lg:text-textcolor block text-[15px]'>Shopping</a>
               </li>
               <li className='max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:hover:after:absolute lg:after:bg-black lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:top-7 lg:after:transition-all lg:after:duration-300'>
-                <a href='javascript:void(0)' className='text-textcolor sm:text-textcolor md:text-textcolor lg:text-white block text-[15px]'>Tracking</a>
+                <a href='javascript:void(0)' className=' text-textcolor sm:text-textcolor md:text-textcolor lg:text-textcolor block text-[15px]'><Dropdown/></a>
               </li>
               <li className='max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:hover:after:absolute lg:after:bg-black lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:top-7 lg:after:transition-all lg:after:duration-300'>
-                <a href='javascript:void(0)' className='text-textcolor sm:text-textcolor md:text-textcolor lg:text-white block text-[15px]'>Support</a>
+                <a href='javascript:void(0)' className='font-semibold text-textcolor sm:text-textcolor md:text-textcolor lg:text-textcolor block text-[15px]'>Tracking</a>
               </li>
               <li className='max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:hover:after:absolute lg:after:bg-black lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:top-7 lg:after:transition-all lg:after:duration-300'>
-                <a href='javascript:void(0)' className='text-textcolor sm:text-textcolor md:text-textcolor lg:text-white block text-[15px]'>Account</a>
+                <a href='javascript:void(0)' className='font-semibold text-textcolor sm:text-textcolor md:text-textcolor lg:text-textcolor block text-[15px]'>Account</a>
               </li>
               <li className='max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:hover:after:absolute lg:after:bg-black lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:top-7 lg:after:transition-all lg:after:duration-300'>
-                <a href='javascript:void(0)' className='text-textcolor sm:text-textcolor md:text-textcolor lg:text-white block text-[15px]'>Places</a>
+                <a href='javascript:void(0)' className='font-semibold text-textcolor sm:text-textcolor md:text-textcolor lg:text-textcolor block text-[15px]'>Places</a>
               </li>
               <li className='max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:hover:after:absolute lg:after:bg-black lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:top-7 lg:after:transition-all lg:after:duration-300'>
-                <a href='javascript:void(0)' className='text-textcolor sm:text-textcolor md:text-textcolor lg:text-white block text-[15px]'>Contact</a>
+                <a href='javascript:void(0)' className='font-semibold text-textcolor sm:text-textcolor md:text-textcolor lg:text-textcolor block text-[15px]'>Contact</a>
               </li>
             </ul>
           </div>
@@ -116,7 +116,7 @@ export default function Navbar(){
                   xmlns="http://www.w3.org/2000/svg"
                   width="24px"
                   height="24px"
-                  className="cursor-pointer fill-white hover:fill-hovercolor"
+                  className="cursor-pointerfill-textcolor"
                   viewBox="0 0 512 512"
                 >
                   <path
