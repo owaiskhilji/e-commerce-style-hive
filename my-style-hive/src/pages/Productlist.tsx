@@ -35,11 +35,9 @@ ProductApi().then(data=>setdata(data) )
    {
     data.length>0 ?(
         data.map((item:productType,index:number)=>(
-            
+     <Link key={index}  to={`/productdetail/${item._id}`} >       
         <div 
-        key={index} 
         data-aos="fade-up"
-
         className="group overflow-hidden cursor-pointer relative shadow-2xl hover:shadow-textcolor">
         <div className="bg-gray-100 w-full overflow-hidden">
           <img src={item.image} alt="Product 1"
@@ -74,7 +72,7 @@ ProductApi().then(data=>setdata(data) )
           </div>
         </div>
       </div>
-
+      </Link>
         ))
     ):(
        

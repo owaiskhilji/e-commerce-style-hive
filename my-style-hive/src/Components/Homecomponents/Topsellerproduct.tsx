@@ -1,12 +1,8 @@
-
-
-
-
-
 import { useState ,useEffect} from "react";
-import {ProductApi, productType} from "../OurProductApi/ProductApi";
- import AOS from "aos"
+import { Link } from "react-router";
+import AOS from "aos"
 import "aos/dist/aos.css";
+import {ProductApi, productType} from "../OurProductApi/ProductApi";
 
 
 function Topsellerproduct() {
@@ -43,6 +39,7 @@ const limitedData = data.slice(0,4)
    {
     limitedData.length>0 ?(
         limitedData.map((item:productType,index:number)=>(
+     <Link to={`/productdetail/${item._id}`} >       
             
         <div 
         key={index} 
@@ -82,7 +79,7 @@ const limitedData = data.slice(0,4)
           </div>
         </div>
       </div>
-
+</Link>
         ))
     ):(
        

@@ -1,5 +1,5 @@
 import { useState ,useEffect} from "react";
-import { useNavigate } from "react-router"
+import { Link,useNavigate } from "react-router"
 import {ProductApi, productType} from "../OurProductApi/ProductApi";
  import AOS from "aos"
 import "aos/dist/aos.css";
@@ -42,6 +42,7 @@ const limitedData = data.slice(0,8)
    {
     limitedData.length>0 ?(
         limitedData.map((item:productType,index:number)=>(
+     <Link to={`/productdetail/${item._id}`} >       
             
         <div 
         key={index} 
@@ -81,7 +82,7 @@ const limitedData = data.slice(0,8)
           </div>
         </div>
       </div>
-
+</Link>
         ))
     ):(
        

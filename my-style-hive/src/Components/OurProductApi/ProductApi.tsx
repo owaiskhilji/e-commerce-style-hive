@@ -1,6 +1,7 @@
 import axios from "axios"
 
 export interface productType{
+    _id:string;
     perfume:string;
     image:string;
     description:string;

@@ -1,5 +1,5 @@
 import { useState ,useEffect} from "react";
-import { useParams} from "react-router"
+import { Link,useParams} from "react-router"
 import axios from "axios"
 import { productType } from "../Components/OurProductApi/ProductApi";
  import AOS from "aos"
@@ -48,6 +48,7 @@ get()
     data.length>0 ?(
         data.map((item:productType,index:number)=>(
             
+          <Link to={`/productdetail/${item._id}`} >       
         <div 
         key={index} 
         data-aos="fade-up"
@@ -86,7 +87,7 @@ get()
           </div>
         </div>
       </div>
-
+</Link>
         ))
     ):(
        

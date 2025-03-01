@@ -1,169 +1,57 @@
-import { AiOutlineHeart } from "react-icons/ai";
-import { BiShoppingBag } from "react-icons/bi";
-import ReactImageGallery from "react-image-gallery";
-// import Rater from "react-rater";
-import "react-rater/lib/react-rater.css";
+import {useState} from "react"
+import Rater from "react-rater";
+ import "react-rater/lib/react-rater.css";
+ import { useParams } from "react-router"
 
 const Productdetail = () => {
-  const productDetailItem = {
-    images: [
-      {
-        original:
-          "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=600",
-        thumbnail:
-          "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=600",
-      },
-      {
-        original:
-          "https://images.pexels.com/photos/1667088/pexels-photo-1667088.jpeg?auto=compress&cs=tinysrgb&w=600",
-        thumbnail:
-          "https://images.pexels.com/photos/1667088/pexels-photo-1667088.jpeg?auto=compress&cs=tinysrgb&w=600",
-      },
-      {
-        original:
-          "https://images.pexels.com/photos/2697787/pexels-photo-2697787.jpeg?auto=compress&cs=tinysrgb&w=600",
-        thumbnail:
-          "https://images.pexels.com/photos/2697787/pexels-photo-2697787.jpeg?auto=compress&cs=tinysrgb&w=600",
-      },
-      {
-        original:
-          "https://images.pexels.com/photos/3373736/pexels-photo-3373736.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        thumbnail:
-          "https://images.pexels.com/photos/3373736/pexels-photo-3373736.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      },
-      {
-        original:
-          "https://images.pexels.com/photos/3910071/pexels-photo-3910071.jpeg?auto=compress&cs=tinysrgb&w=600",
-        thumbnail:
-          "https://images.pexels.com/photos/3910071/pexels-photo-3910071.jpeg?auto=compress&cs=tinysrgb&w=600",
-      },
-    ],
-    title: "BIG ITALIAN SOFA",
-    reviews: "150",
-    availability: true,
-    brand: "apex",
-    category: "Sofa",
-    sku: "BE45VGTRK",
-    price: 450,
-    previousPrice: 599,
-    description:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem exercitationem voluptate sint eius ea assumenda provident eos repellendus qui neque! Velit ratione illo maiores voluptates commodi eaque illum, laudantium non!",
-    size: ["XS", "S", "M", "L", "XL"],
-    color: ["gray", "violet", "red"],
-  };
-  const plusMinuceButton =
-    "flex h-8 w-8 cursor-pointer items-center justify-center border duration-100 hover:bg-neutral-100 focus:ring-2 focus:ring-gray-500 active:ring-2 active:ring-gray-500";
-  return (
-    <section className="container flex-grow mx-auto max-w-[1200px] border-b py-5 lg:grid lg:grid-cols-2 lg:py-10">
-      {/* image gallery */}
-      <div className="container mx-auto px-4">
-        <ReactImageGallery
-          showBullets={false}
-          showFullscreenButton={false}
-          showPlayButton={false}
-          items={productDetailItem.images}
-        />
+ const { id } = useParams()
+ console.log("ID>>",id)
+ 
+ const [images, setImages] = useState({
+  img1 : "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,b_rgb:f5f5f5/3396ee3c-08cc-4ada-baa9-655af12e3120/scarpa-da-running-su-strada-invincible-3-xk5gLh.png",
+  img2 : "https://static.nike.com/a/images/f_auto,b_rgb:f5f5f5,w_440/e44d151a-e27a-4f7b-8650-68bc2e8cd37e/scarpa-da-running-su-strada-invincible-3-xk5gLh.png",
+  img3 : "https://static.nike.com/a/images/f_auto,b_rgb:f5f5f5,w_440/44fc74b6-0553-4eef-a0cc-db4f815c9450/scarpa-da-running-su-strada-invincible-3-xk5gLh.png",
+  img4 : "https://static.nike.com/a/images/f_auto,b_rgb:f5f5f5,w_440/d3eb254d-0901-4158-956a-4610180545e5/scarpa-da-running-su-strada-invincible-3-xk5gLh.png"
+})
 
-        {/* /image gallery  */}
+const [activeImg, setActiveImage] = useState(images.img1)
+
+const [amount, setAmount] = useState(1);
+
+
+return (
+  <div className='flex flex-col justify-between lg:flex-row gap-16 lg:items-center'>
+      <div className='flex flex-col gap-6 lg:w-2/4'>
+          <img src={activeImg} alt="" className='w-full h-full aspect-square object-cover rounded-xl'/>
+          <div className='flex flex-row justify-between h-24'>
+              <img src={images.img1} alt="" className='w-24 h-24 rounded-md cursor-pointer' onClick={() => setActiveImage(images.img1)}/>
+              <img src={images.img2} alt="" className='w-24 h-24 rounded-md cursor-pointer' onClick={() => setActiveImage(images.img2)}/>
+              <img src={images.img3} alt="" className='w-24 h-24 rounded-md cursor-pointer' onClick={() => setActiveImage(images.img3)}/>
+              <img src={images.img4} alt="" className='w-24 h-24 rounded-md cursor-pointer' onClick={() => setActiveImage(images.img4)}/>
+          </div>
       </div>
-      {/* description  */}
-
-      <div className="mx-auto px-5 lg:px-5">
-        <h2 className="pt-3 text-2xl font-bold lg:pt-0">
-          {productDetailItem.title}
-        </h2>
-        <div className="mt-1">
-          <div className="flex items-center">
-            <Rater
-              style={{ fontSize: "20px" }}
-              total={5}
-              interactive={false}
-              rating={3.5}
-            />
-
-            <p className="ml-3 text-sm text-gray-400">
-              ({productDetailItem.reviews})
-            </p>
+      {/* ABOUT */}
+      <div className='flex flex-col gap-4 lg:w-2/4'>
+          <div>
+              <span className=' text-violet-600 font-semibold'>Special Sneaker</span>
+              <h1 className='text-3xl font-bold'>Nike Invincible 3</h1>
           </div>
-        </div>
-        <p className="mt-5 font-bold">
-          Availability:{" "}
-          {productDetailItem.availability ? (
-            <span className="text-green-600">In Stock </span>
-          ) : (
-            <span className="text-red-600">Expired</span>
-          )}
-        </p>
-        <p className="font-bold">
-          Brand: <span className="font-normal">{productDetailItem.brand}</span>
-        </p>
-        <p className="font-bold">
-          Cathegory:{" "}
-          <span className="font-normal">{productDetailItem.category}</span>
-        </p>
-        <p className="font-bold">
-          SKU: <span className="font-normal">{productDetailItem.sku}</span>
-        </p>
-        <p className="mt-4 text-4xl font-bold text-violet-900">
-          ${productDetailItem.price}{" "}
-          <span className="text-xs text-gray-400 line-through">
-            ${productDetailItem.previousPrice}
-          </span>
-        </p>
-        <p className="pt-5 text-sm leading-5 text-gray-500">
-          {productDetailItem.description}
-        </p>
-        <div className="mt-6">
-          <p className="pb-2 text-xs text-gray-500">Size</p>
-          <div className="flex gap-1">
-            {productDetailItem.size.map((x, index) => {
-              return (
-                <div
-                  key={index}
-                  className="flex h-8 w-8 cursor-pointer items-center justify-center border duration-100 hover:bg-neutral-100 focus:ring-2 focus:ring-gray-500 active:ring-2 active:ring-gray-500"
-                >
-                  {x}
-                </div>
-              );
-            })}
+          <p className='text-gray-700'>
+          Con un'ammortizzazione incredibile per sostenerti in tutti i tuoi chilometri, Invincible 3 offre un livello di comfort elevatissimo sotto il piede per aiutarti a dare il massimo oggi, domani e oltre. Questo modello incredibilmente elastico e sostenitivo, è pensato per dare il massimo lungo il tuo percorso preferito e fare ritorno a casa carico di energia, in attesa della prossima corsa.
+          </p>
+          <h6 className='text-2xl font-semibold'>$ 199.00</h6>
+          <div className='flex flex-row items-center gap-12'>
+              <div className='flex flex-row items-center'>
+                  <button className='bg-gray-200 py-2 px-5 rounded-lg text-violet-800 text-3xl' onClick={() => setAmount((prev) => prev - 1)}>-</button>
+                  <span className='py-4 px-6 rounded-lg'>{amount}</span>
+                  <button className='bg-gray-200 py-2 px-4 rounded-lg text-violet-800 text-3xl' onClick={() => setAmount((prev) => prev + 1)}>+</button>
+              </div>
+              <button className='bg-violet-800 text-white font-semibold py-3 px-16 rounded-xl h-full'>Add to Cart</button>
           </div>
-        </div>
-        <div className="mt-6">
-          <p className="pb-2 text-xs text-gray-500">Color</p>
-          <div className="flex gap-1">
-            {productDetailItem.color.map((x, index) => {
-              return (
-                <div
-                  key={index}
-                  className={`h-8 w-8 cursor-pointer border border-white bg-${x}-600 focus:ring-2 focus:ring-${x}-500 active:ring-2 active:ring-${x}-500`}
-                />
-              );
-            })}
-          </div>
-        </div>
-        <div className="mt-6">
-          <p className="pb-2 text-xs text-gray-500">Quantity</p>
-          <div className="flex">
-            <button className={`${plusMinuceButton}`}>−</button>
-            <div className="flex h-8 w-8 cursor-text items-center justify-center border-t border-b active:ring-gray-500">
-              1
-            </div>
-            <button className={`${plusMinuceButton}`}> +</button>
-          </div>
-        </div>
-        <div className="mt-7 flex flex-row items-center gap-6">
-          <button className="flex h-12 w-1/3 items-center justify-center bg-violet-900 text-white duration-100 hover:bg-blue-800">
-            <BiShoppingBag className="mx-2" />
-            Add to cart
-          </button>
-          <button className="flex h-12 w-1/3 items-center justify-center bg-amber-400 duration-100 hover:bg-yellow-300">
-            <AiOutlineHeart className="mx-2" />
-            Wishlist
-          </button>
-        </div>
       </div>
-    </section>
-  );
+  </div>
+)
+
 };
 
 export default Productdetail;
