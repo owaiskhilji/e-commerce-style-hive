@@ -1,8 +1,13 @@
 // import Swal from "sweetalert2"
-import { productType } from "../OurProductApi/ProductApi";
+import { useState,useContext } from "react"
+import { productType } from "./OurProductApi/ProductApi";
+import  {countContext } from "../CountContext/ContextApi";
 
 export function Savedproduct({item}:{item:productType}){
-    function saveProducts(){
+  const [count,setcount]=useState<number>(0)
+const value  = useContext(countContext)
+
+  function saveProducts(){
     if(item){
         const existingData:any = localStorage.getItem('saveData');
         const parsedData:productType[] = existingData ? JSON.parse(existingData) : [];
@@ -24,12 +29,16 @@ export function Savedproduct({item}:{item:productType}){
           //   },
           // });
         alert("product already saved")
-
         return
         }
         parsedData.push(item);
         const saveData:string = JSON.stringify(parsedData);
         localStorage.setItem('saveData', saveData);
+        setcount(count + 1 )
+        value.setcountvalue(count)
+        console.log("count",count)
+        console.log("SETcount",value.setcountvalue)
+        
         // Swal.fire({
         //   position: "top-end",
         //   icon: "success",

@@ -4,7 +4,7 @@ import axios from "axios"
 import AOS from "aos"
 import "aos/dist/aos.css";
 import { productType } from "../Components/OurProductApi/ProductApi";
-import  {Savedproduct}  from "../Components/Saveproduct/Savedproduct";
+import  {Savedproduct}  from "../Components/Savedproduct";
 
 
 
@@ -36,7 +36,7 @@ catch(err){
 }
 }
 get()
-},[])
+},[data])
 
 //  console.log("products",data )
 

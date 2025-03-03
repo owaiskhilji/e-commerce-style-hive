@@ -9,7 +9,7 @@ import Contactus from  '../Components/Homecomponents/Contactus';
 export default function Home(){
     return(
         <div>
-<Crousel/>
+       <Crousel/>
         <Topcategory/>
         <ProductCart/>
         <Banner/>

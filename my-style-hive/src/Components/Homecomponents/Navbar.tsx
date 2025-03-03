@@ -1,5 +1,7 @@
+
 // import "../App.css"
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef,useContext } from 'react';
+import { countContext } from "../../CountContext/ContextApi" 
 import Dropdown from "./Dropdown"
 export default function Navbar(){
    
@@ -8,6 +10,11 @@ export default function Navbar(){
     const dropdownRef = useRef<HTMLDivElement>(null);
     const toggleDropdownRef = useRef<HTMLLIElement>(null);
  
+const value = useContext(countContext)
+const count = value.countvalue
+
+
+
     // Handle click outside the dropdown to close it
     useEffect(() => {
       const handleClickOutside = (event: MouseEvent) => {
@@ -83,7 +90,7 @@ export default function Navbar(){
     </a>
               </li>
               <li className='max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:after:absolute lg:after:bg-black lg:after:w-full lg:after:h-[2px] lg:after:block lg:after:top-7 lg:after:transition-all lg:after:duration-300'>
-                <a href='javascript:void(0)' className='font-semibold text-textcolor sm:text-textcolor md:text-textcolor lg:text-textcolor block text-[15px]'>Shopping</a>
+                <a href='/' className='font-semibold text-textcolor sm:text-textcolor md:text-textcolor lg:text-textcolor block text-[15px]'>Shopping</a>
               </li>
               <li>
                 <Dropdown/>
@@ -92,7 +99,7 @@ export default function Navbar(){
                 <a href='javascript:void(0)' className='font-semibold text-textcolor sm:text-textcolor md:text-textcolor lg:text-textcolor block text-[15px]'>Tracking</a>
               </li>
               <li className='max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:hover:after:absolute lg:after:bg-black lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:top-7 lg:after:transition-all lg:after:duration-300'>
-                <a href='javascript:void(0)' className='font-semibold text-textcolor sm:text-textcolor md:text-textcolor lg:text-textcolor block text-[15px]'>Account</a>
+                <a href='javascript:void(0)' className='font-semibold text-textcolor sm:text-textcolor md:text-textcolor lg:text-textcolor block text-[15px]'>Account {count}</a>
               </li>
               <li className='max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:hover:after:absolute lg:after:bg-black lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:top-7 lg:after:transition-all lg:after:duration-300'>
                 <a href='javascript:void(0)' className='font-semibold text-textcolor sm:text-textcolor md:text-textcolor lg:text-textcolor block text-[15px]'>Places</a>
@@ -141,7 +148,7 @@ export default function Navbar(){
                     <hr className="border-b-0 my-4" />
                     <ul className="space-y-1.5">
                       <li><a href='javascript:void(0)' className="text-sm text-gray-500 hover:text-black">Order</a></li>
-                      <li><a href='javascript:void(0)' className="text-sm text-gray-500 hover:text-black">Wishlist</a></li>
+                      <li><a href='/savedproduct' className="text-sm text-gray-500 hover:text-black">Wishlist</a></li>
                       <li><a href='javascript:void(0)' className="text-sm text-gray-500 hover:text-black">Gift Cards</a></li>
                       <li><a href='javascript:void(0)' className="text-sm text-gray-500 hover:text-black">Contact Us</a></li>
                     </ul>
