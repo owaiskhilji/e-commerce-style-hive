@@ -22,8 +22,8 @@ const Topcategory = () => {
     autoplay: true, 
     autoplaySpeed: 3000, 
     cssEase: "ease-in-out",
-    centerMode: true,  // ✅ Centering enable kiya
-    variableWidth: false, // ✅ Proper width maintain karega
+    centerMode: true, 
+    variableWidth: false,
     responsive: [
       {
         breakpoint: 1024,
@@ -37,7 +37,7 @@ const Topcategory = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          centerMode: true,  // ✅ Mobile par center hoga
+          centerMode: true,  
           arrows: false, 
         },
       },
