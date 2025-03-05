@@ -1,8 +1,9 @@
-import {useState,useEffect} from "react"
+import {useState,useEffect,useContext} from "react"
  import Rater from "react-rater";
 import axios from "axios";
  import "react-rater/lib/react-rater.css";
  import { useParams } from "react-router-dom"
+//  import {countContext} from "../CountContext/ContextApi"
 
 
 export interface ProductType {
@@ -23,12 +24,12 @@ export interface ProductType {
 
 
 const Productdetail = () => {
-    const [data, setData] = useState<ProductType | null>(null)
+ const [data, setData] = useState<ProductType | null>(null)
+ const [count, setcount] = useState<number>(0)
 
  const { id } = useParams()
+//  const value  = useContext(countContext)
  
- console.log("ID>>", data )
-
  
   useEffect(()=>{
 if(!id) return
@@ -37,6 +38,36 @@ if(!id) return
  .catch(err =>console.log(err))
  },[id])
  
+
+
+  function addtocarthandle(){
+    setcount(count + 1)
+    const updateValue = count+1
+    
+    if(data){
+      const existingData = localStorage.getItem('addtocart');
+      const parsedData = existingData ? JSON.parse(existingData) : [];
+      if(parsedData.some((item:ProductType)=>item.id === data.id)){
+        alert("this cart already add")
+        return 
+      }
+      
+      parsedData.push(data);
+      const saveData = JSON.stringify(parsedData);
+      localStorage.setItem('addtocart', saveData);
+
+      const existingValue = localStorage.getItem('cartadd');
+      const newCartValue = existingValue ? JSON.parse(existingValue) + 1 : 1; // Handle null case
+
+      localStorage.setItem('cartadd', JSON.stringify(updateValue));
+      localStorage.setItem('cartAdd', JSON.stringify(newCartValue));
+      return data;
+    }
+  }
+
+
+
+
 
 if(!data)return <div>Loading......</div>
 
@@ -56,6 +87,7 @@ if(!data)return <div>Loading......</div>
 
 return (
   <div className='flex flex-col justify-between lg:flex-row gap-16 lg:items-center mt-14'>
+  
       <div className='flex flex-col gap-6 lg:w-2/5'>
           <img src={data.image} alt="data" className='w-full h-full aspect-square object-cover rounded-xl'/>
           {/* <div className='flex flex-row justify-between h-24'>
@@ -71,7 +103,11 @@ return (
               <h1 className='text-xl sm:text-2xl md:text-3xl lg:text-3xl font-bold text-textcolor'>{data.title}</h1>
               <span className='text-lg sm:text-xl md:text-2xl  text-backgroundcolor font-semibold'>{data.category}</span>
           </div>
-              <Rater total={5} rating={data.rating.rate} interactive={false} />
+              <Rater 
+              total={5} 
+              rating={data.rating.rate} 
+              interactive={false} 
+              />
           <p className='text-sm sm:text-lg md:text-lg text-textcolor'>
           {data.description}
           </p>
@@ -79,13 +115,12 @@ return (
           <div className='flex flex-row items-center gap-12'>
               <div className='flex flex-row items-center'>
               <button 
-            //  onClick={()=>navigate("/productlist")}
-               className="font-semibold bg-backgroundcolor hover:bg-textcolor w-32 sm:w-44 md:w-52 lg:w-52 text-xs sm:text-base md:text-lg lg:text-lg  text-textcolor hover:text-white px-4 py-2 rounded-lg shadow-lg">
+            className="font-semibold bg-backgroundcolor hover:bg-textcolor w-32 sm:w-44 md:w-52 lg:w-52 text-xs sm:text-base md:text-lg lg:text-lg  text-textcolor hover:text-white px-4 py-2 rounded-lg shadow-lg">
                   Buy Now 
                        </button>
               </div>
               <button 
-                  //  onClick={()=>navigate("/productlist")}
+                    onClick={()=>addtocarthandle()}
                     className="font-semibold bg-backgroundcolor hover:bg-textcolor w-32 sm:w-44 md:w-52 lg:w-52 text-xs sm:text-base md:text-lg lg:text-lg  text-textcolor hover:text-white px-4 py-2 rounded-lg shadow-lg">
                      Add to Cart 
                     </button>
