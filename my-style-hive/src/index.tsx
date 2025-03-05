@@ -1,6 +1,8 @@
 // import "tw-elements-react/dist/css/tw-elements-react.min.css";
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { CountProvider } from './CountContext/ContextApi';
+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -10,7 +12,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+    <CountProvider> 
     <App />
+    </CountProvider>
   </React.StrictMode>
 );
 

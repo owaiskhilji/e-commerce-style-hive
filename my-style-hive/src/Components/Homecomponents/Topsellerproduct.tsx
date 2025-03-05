@@ -45,7 +45,7 @@ const limitedData = data.slice(0,4)
         data-aos="fade-up"
 
         className="group overflow-hidden cursor-pointer relative shadow-2xl hover:shadow-textcolor">
-          <Link to={`/productdetail/${item._id}`} >       
+          <Link to={`/productdetail/${item.id}`} >       
         <div className="bg-gray-100 w-full overflow-hidden">
           <img src={item.image} alt="Product 1"
             className="aspect-[3/4] w-full object-cover object-top hover:scale-110 transition-all duration-700" />
@@ -69,7 +69,7 @@ const limitedData = data.slice(0,4)
             </button>
           </div>
           <div className="z-20 relative">
-            <h6 className="text-sm font-semibold text-textcolor truncate">{item.perfume}</h6>
+            <h6 className="text-sm font-semibold text-textcolor truncate">{item.title}</h6>
             <h6 className="text-sm text-textcolor mt-2">${item.price}</h6>
           </div>
         </div>

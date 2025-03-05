@@ -11,7 +11,7 @@ export default function Navbar(){
     const toggleDropdownRef = useRef<HTMLLIElement>(null);
  
 const value = useContext(countContext)
-const count = value.countvalue
+const count = value.countvalue || 0
 
 
 

@@ -1,16 +1,16 @@
 import axios from "axios"
 
 export interface productType{
-    _id:string;
-    perfume:string;
+    id: number;
+    title:string;
     image:string;
     description:string;
     price:string;
     category:string;
 }
 export async function ProductApi(){
-    const response = await axios.get("https://67be0734321b883e790edf03.mockapi.io/api/v1/perfumes/perfumedata")
-try{
+    try{
+    const response = await axios.get("https://fakestoreapi.com/products")
     return response.data
 }
 catch(err){

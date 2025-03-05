@@ -37,7 +37,7 @@ ProductApi().then(data=>setdata(data) )
    {
     data.length>0 ?(
         data.map((item:productType,index:number)=>(
-     <Link key={index}  to={`/productdetail/${item._id}`} >       
+     <Link key={index}  to={`/productdetail/${item.id}`} >       
         <div 
         data-aos="fade-up"
         className="group overflow-hidden cursor-pointer relative shadow-2xl hover:shadow-textcolor">
@@ -63,7 +63,7 @@ ProductApi().then(data=>setdata(data) )
             </button>
           </div>
           <div className="z-20 relative">
-            <h6 className="text-sm font-semibold text-textcolor truncate">{item.perfume}</h6>
+            <h6 className="text-sm font-semibold text-textcolor truncate">{item.title}</h6>
             <h6 className="text-sm text-textcolor mt-2">${item.price}</h6>
           </div>
         </div>

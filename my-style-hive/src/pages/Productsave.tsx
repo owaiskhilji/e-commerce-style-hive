@@ -20,9 +20,9 @@ export default function Productsave(){
             },[])
 
 
-function handleremove(id:string){
+function handleremove(id:number){
     console.log("IDDD",id)
-  const updateWishData =   wishData.filter((item:productType)=> item._id !== id)
+  const updateWishData =   wishData.filter((item:productType)=> item.id !== id)
   setWishData(updateWishData)
   localStorage.setItem("saveData",JSON.stringify(updateWishData))
 }
@@ -48,7 +48,7 @@ function handleremove(id:string){
      <div className="bg-gradient-to-tr from-gray-300 via-gray-100 flex items-center justify-center to-gray-50 w-full h-full p-4 shrink-0 text-center">
     
     <img
-                    alt={item.perfume || "Product image"}
+                    alt={item.title || "Product image"}
                     src={item.image}
                     className="w-full object-cover"
                     /> 
@@ -56,7 +56,7 @@ function handleremove(id:string){
           </div>
     
           <div className="p-2">
-            <h3 className="text-lg font-bold text-gray-800">{item.perfume}</h3>
+            <h3 className="text-lg font-bold text-gray-800">{item.title}</h3>
     
             <ul className="text-sm text-gray-500 space-y-2 list-disc pl-4 mt-4">
               <li>{item.category}</li>
@@ -75,7 +75,7 @@ function handleremove(id:string){
     
             <div className="divide-x border-y grid grid-cols-2 text-center mt-6">
               <button
-               onClick={()=>navigete(`/productdetail/${item._id}`)}
+               onClick={()=>navigete(`/productdetail/${item.id}`)}
               type="button" className="bg-transparent hover:bg-backgroundcolor flex items-center justify-center py-3 text-textcolor text-sm shadow-md">
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 fill-current mr-3 inline-block" viewBox="0 0 128 128">
                   <path d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z" data-original="#000000"></path>
@@ -83,7 +83,7 @@ function handleremove(id:string){
                 View details
               </button>
               <button 
-              onClick={()=>handleremove(item._id)}
+              onClick={()=>handleremove(item.id)}
               type="button" className="bg-transparent hover:bg-backgroundcolor flex items-center justify-center py-3 text-textcolor text-sm shadow-md">
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-3 fill-current mr-3 inline-block" viewBox="0 0 390 390">
                   <path d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z" data-original="#000000"></path>

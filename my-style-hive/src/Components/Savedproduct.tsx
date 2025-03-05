@@ -8,10 +8,14 @@ export function Savedproduct({item}:{item:productType}){
 const value  = useContext(countContext)
 
   function saveProducts(){
+
+
+
+
     if(item){
         const existingData:any = localStorage.getItem('saveData');
         const parsedData:productType[] = existingData ? JSON.parse(existingData) : [];
-        if(parsedData.some((data:productType)=>data._id === item._id)){
+        if(parsedData.some((data:productType)=>data.id === item.id)){
           // Swal.fire({
           //   title: "Product Already Saved!",
           //   text: "You have already added this product to your wishlist.",
@@ -34,10 +38,6 @@ const value  = useContext(countContext)
         parsedData.push(item);
         const saveData:string = JSON.stringify(parsedData);
         localStorage.setItem('saveData', saveData);
-        setcount(count + 1 )
-        value.setcountvalue(count)
-        console.log("count",count)
-        console.log("SETcount",value.setcountvalue)
         
         // Swal.fire({
         //   position: "top-end",
@@ -47,9 +47,27 @@ const value  = useContext(countContext)
         //   timer: 1500
         // });
         alert("product saved")
+
+
+    setcount(prevCount => {
+      const updatedCount = prevCount + 1;
+      localStorage.setItem("count",JSON.stringify(updatedCount));
+      return updatedCount;
+  });
+
+  const countGet = localStorage.getItem("count")
+  if(countGet){
+    localStorage.setItem("countGet",JSON.stringify(parseInt(countGet)+1));
+}else{
+  localStorage.setItem("countGet","1");
+}
+
+
+
         return saveData
       
       }
+
     }
 
     
