@@ -1,25 +1,25 @@
 
 // import "../App.css"
 import { useState, useEffect, useRef,useContext } from 'react';
-import { countContext } from "../../CountContext/ContextApi" 
+// import { countContext } from "../../CountContext/ContextApi" 
 import Dropdown from "./Dropdown"
 export default function Navbar(){
    
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [cartCount, setcartCount] = useState(0);
+    // const [cartCount, setcartCount] = useState(0);
     const dropdownRef = useRef<HTMLDivElement>(null);
     const toggleDropdownRef = useRef<HTMLLIElement>(null);
  
-const value = useContext(countContext)
+// const value = useContext(countContext)
 // const count = value.countvalue || 0
 
-useEffect(()=>{
-  function getvalue(){
-  const totalCart = localStorage.getItem('cartAdd');
-setcartCount(totalCart ? JSON.parse(totalCart): 0)}
-getvalue()
-},[cartCount])
+// useEffect(()=>{
+//   function getvalue(){
+//   const totalCart = localStorage.getItem('cartAdd');
+// setcartCount(totalCart ? JSON.parse(totalCart): 0)}
+// getvalue()
+// },[cartCount])
 
 
 
@@ -112,7 +112,7 @@ getvalue()
                 <a href='javascript:void(0)' className='font-semibold text-textcolor sm:text-textcolor md:text-textcolor lg:text-textcolor block text-[15px]'>Account</a>
               </li>
               <li className='max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:hover:after:absolute lg:after:bg-black lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:top-7 lg:after:transition-all lg:after:duration-300'>
-                <a href='javascript:void(0)' className='font-semibold text-textcolor sm:text-textcolor md:text-textcolor lg:text-textcolor block text-[15px]'>Cart <span className="p-1 text-sm text-white rounded-full">({cartCount})</span></a>
+                <a href='/cart' className='font-semibold text-textcolor sm:text-textcolor md:text-textcolor lg:text-textcolor block text-[15px]'>Cart </a>
               </li>
               <li className='max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:hover:after:absolute lg:after:bg-black lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:top-7 lg:after:transition-all lg:after:duration-300'>
                 <a href='javascript:void(0)' className='font-semibold text-textcolor sm:text-textcolor md:text-textcolor lg:text-textcolor block text-[15px]'>Contact</a>

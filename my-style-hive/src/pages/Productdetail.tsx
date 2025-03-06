@@ -2,7 +2,7 @@ import {useState,useEffect,useContext} from "react"
  import Rater from "react-rater";
 import axios from "axios";
  import "react-rater/lib/react-rater.css";
- import { useParams } from "react-router-dom"
+ import { useParams , useNavigate} from "react-router-dom"
 //  import {countContext} from "../CountContext/ContextApi"
 
 
@@ -25,12 +25,11 @@ export interface ProductType {
 
 const Productdetail = () => {
  const [data, setData] = useState<ProductType | null>(null)
- const [count, setcount] = useState<number>(0)
 
  const { id } = useParams()
-//  const value  = useContext(countContext)
- 
- 
+ const navigate = useNavigate()
+
+
   useEffect(()=>{
 if(!id) return
  axios.get(`https://fakestoreapi.com/products/${id}`)
@@ -41,9 +40,6 @@ if(!id) return
 
 
   function addtocarthandle(){
-    setcount(count + 1)
-    const updateValue = count+1
-    
     if(data){
       const existingData = localStorage.getItem('addtocart');
       const parsedData = existingData ? JSON.parse(existingData) : [];
@@ -51,20 +47,39 @@ if(!id) return
         alert("this cart already add")
         return 
       }
-      
-      parsedData.push(data);
+        parsedData.push(data);
       const saveData = JSON.stringify(parsedData);
       localStorage.setItem('addtocart', saveData);
-
-      const existingValue = localStorage.getItem('cartadd');
-      const newCartValue = existingValue ? JSON.parse(existingValue) + 1 : 1; // Handle null case
-
-      localStorage.setItem('cartadd', JSON.stringify(updateValue));
-      localStorage.setItem('cartAdd', JSON.stringify(newCartValue));
-      return data;
+ return data;
     }
   }
 
+
+
+  function buyNowhandle(){
+    navigate("/cart")
+    if(data){
+      const existingData = localStorage.getItem('addtocart');
+      const parsedData = existingData ? JSON.parse(existingData) : [];
+      if(parsedData.some((item:ProductType)=>item.id === data.id)){
+        alert("this cart already add")
+        return 
+      }
+        parsedData.push(data);
+      const saveData = JSON.stringify(parsedData);
+      localStorage.setItem('addtocart', saveData);
+ return data;
+    }
+  }
+    
+  
+  
+  // setcount(count +1)
+    // const updateValue = count + 1 
+  
+  // const newCartValue = existingValue ? JSON.parse(existingValue) + 1 : 1;
+  // localStorage.setItem('cartadd')
+  // localStorage.setItem('cartAdd', JSON.stringify(newCartValue));
 
 
 
@@ -115,6 +130,7 @@ return (
           <div className='flex flex-row items-center gap-12'>
               <div className='flex flex-row items-center'>
               <button 
+              onClick={()=>buyNowhandle()}
             className="font-semibold bg-backgroundcolor hover:bg-textcolor w-32 sm:w-44 md:w-52 lg:w-52 text-xs sm:text-base md:text-lg lg:text-lg  text-textcolor hover:text-white px-4 py-2 rounded-lg shadow-lg">
                   Buy Now 
                        </button>

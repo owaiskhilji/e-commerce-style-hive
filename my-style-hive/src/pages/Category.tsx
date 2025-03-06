@@ -12,9 +12,9 @@ import  {Savedproduct}  from "../Components/Savedproduct";
 function Category() {
     const [data , setdata] = useState<productType[]>([])
 
-const getData = localStorage.getItem('saveData')
 
     const { category } = useParams()
+    console.log(category )
     useEffect(() => {
         AOS.init({
           duration: 1000, 
@@ -24,7 +24,7 @@ const getData = localStorage.getItem('saveData')
  useEffect(()=>{
      async function get(){
      try{
-    const response = await axios.get(`https://fakestoreapi.com/products/${category}`)
+    const response = await axios.get(`https://fakestoreapi.com/products/category/${category}`)
 
 console.log("RESPONSE",response.data)
     setdata(response.data)

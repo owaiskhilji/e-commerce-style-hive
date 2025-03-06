@@ -5,8 +5,9 @@ export interface productType{
     title:string;
     image:string;
     description:string;
-    price:string;
+    price:number;
     category:string;
+    quantity : number
 }
 export async function ProductApi(){
     try{

@@ -9,6 +9,8 @@ const Dropdown = () => {
 
   const columns = 10;
   const categoryWidth = 180;
+
+  const uniqueCategory = Array.from(new Set(data.map((item:productType) => item.category)))
   const containerWidth = Math.min(data.length * categoryWidth, columns * categoryWidth);
 
   const handleMouseEnter = () => {
@@ -66,13 +68,13 @@ const Dropdown = () => {
                 gridTemplateColumns: `repeat(auto-fill, minmax(${categoryWidth}px, 1fr))`, // ✅ Auto-adjust grid columns
               }}>
             {
-    data.length>0 ?(
-        data.map((item:productType,index:number)=>(
+    uniqueCategory.length>0 ?(
+      uniqueCategory.map((cart,index:number)=>(
         <div  key={index}>
               <a href={`/c/${category}`}
-              onClick={()=>setcategory(item.category)}
+              onClick={()=>setcategory(cart)}
               className="text-black block text-lg hover:underline py-2 border-b-2">
-                {item.category}
+                {cart}
               </a>
             </div>
 
